@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'account',
-    'django.contrib.admin',
+
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django Authentication Settings
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
