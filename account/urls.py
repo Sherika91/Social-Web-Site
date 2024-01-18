@@ -32,7 +32,7 @@ urlpatterns = [
     #      auth_views.PasswordResetCompleteView.as_view(),
     #      name='password_reset_complete'),
 
-    # Djangos's All Auth URLs Including the ones above
+    # Djangos's All Auth URLs, All the ones above.
     path('', include('django.contrib.auth.urls')),
 
     # Dashboard URLs
