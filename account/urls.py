@@ -40,4 +40,7 @@ urlpatterns = [
 
     # User Register URL's
     path('register/', views.register, name='register'),
+
+    # User Profile Edit URL's
+    path('edit/', views.edit, name='edit'),
 ]
