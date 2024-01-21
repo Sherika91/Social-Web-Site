@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Local Apps
     'account',
     'django.contrib.admin',
+    'images',
 
     # Third Party Apps
     'social_django',
