@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%-8trh5%kk241$!y+epe0l5_w_wzn(#_nx7m-)6g8_c)j_$-o8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'account',
     'django.contrib.admin',
 
+    # Third Party Apps
+    'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -107,7 +110,26 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+
 ]
+# Custom Authentication Settings of  Social-Auth for Adding users to the database
+SOCIAL_AUTH_PIPELINE = [
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'account.authentication.create_profile',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+]
+
+# secret key for wtitter
+# a = "M0Bq02B72hzdzySinXQmOJ3Mch8uER_e10neDZRpVRDJ4k_dbQ"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -140,3 +162,11 @@ LOGIN_URL = 'login'
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Social Authentication Settings for Twitter
+SOCIAL_AUTH_TWITTER_KEY = 'hvd49F6y0YECtvlBLd8Jt5IiC'
+SOCIAL_AUTH_TWITTER_SECRET = 'nuxivjAUwJe8OjKCy1eLsfZxTrmZeVrTzeObXnROdStd30GA98'
+
+# Social Authentication Settings for Google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '579727203757-69c4vqfmup3j6f63ss30hq867ug2uunn.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

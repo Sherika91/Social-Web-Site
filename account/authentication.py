@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 
+from account.models import Profile
+
 
 class EmailAuthBackend:
     """
     Authenticate user using an e-mail addres.
     """
-
     def authenticate(self, requeset, username=None, password=None):
         try:
             user = User.objects.get(email=username)
@@ -20,3 +21,10 @@ class EmailAuthBackend:
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
+
+def create_profile(backend, user, *args, **kwargs):
+    """
+    Create user profile when new user is created.
+    """
+    Profile.objects.get_or_create(user=user)
