@@ -10,6 +10,7 @@ class Imege(models.Model):
     url = models.URLField(max_length=2000)
     image = models.ImageField(upload_to='images/Y%/$%m/%d/')
     created = models.DateField(auto_now_add=True)
+    users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='images_liked', blank=True)
 
     class Meta:
         indexes = [
