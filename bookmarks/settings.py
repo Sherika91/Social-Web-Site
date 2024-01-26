@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -152,7 +154,6 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -173,3 +174,7 @@ SOCIAL_AUTH_TWITTER_SECRET = 'nuxivjAUwJe8OjKCy1eLsfZxTrmZeVrTzeObXnROdStd30GA98
 # Social Authentication Settings for Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '579727203757-69c4vqfmup3j6f63ss30hq867ug2uunn.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
