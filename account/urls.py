@@ -19,8 +19,11 @@ urlpatterns = [
 
     # User List URL's
     path('users/', views.user_list, name='user_list'),
-    path('users/<username>/', views.use_detail, name='user_detail'),
 
     # User Follows URL's
     path('users/follow/', views.user_follow, name='user_follow'),
+
+    # User Detail URL's
+    path('users/<username>/', views.use_detail, name='user_detail'),
+
 ]
